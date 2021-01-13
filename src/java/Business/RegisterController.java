@@ -103,7 +103,7 @@ public class RegisterController extends HttpServlet{
              if(insertStatus == 1){
                  out.println("<script>");
                  out.println("  alert('Register Success');");
-                 out.println("    window.location = '/UserModule2/login.jsp'");
+                 out.println("    window.location = '/UserModule2/index.jsp'");
                  out.println("</script>");
          }
          }

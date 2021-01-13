@@ -87,7 +87,7 @@ public class SignInController extends HttpServlet {
         
         try{
            SignIn signIn = jdbcUtility.checkLogin(email, password);
-           String destPage = "login.jsp";
+           String destPage = "index.jsp";
            
            if(signIn != null){
                       HttpSession session = request.getSession();
