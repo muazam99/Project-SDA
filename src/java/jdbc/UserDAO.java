@@ -192,7 +192,7 @@ public class UserDAO {
             
             if(result.next()){
                 admin = new Admin();
-                admin.setAdminName(result.getString("Name"));
+                admin.setAdminName("(Admin) "+ (result.getString("adminName")));
                 admin.setAdminEmail(email);
             }          
              con.close();      
