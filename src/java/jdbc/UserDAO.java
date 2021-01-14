@@ -7,6 +7,7 @@ package jdbc;
 
 import java.sql.*;
 import Middleware.SignIn;
+import Middleware.Admin;
 
 /**
  *
@@ -165,19 +166,39 @@ public class UserDAO {
                 signIn.setName(result.getString("Name"));
                 signIn.setEmail(email);
             }
-            
-            con.close();
-            
-            return signIn;
-            
+             con.close();      
+            return signIn;  
+            }
+    
+    
+    public Admin checkAdminLogin(String email, String password) throws SQLException,
+            ClassNotFoundException {
         
-    }
+         
+        loadDriver(driver);
+        Connection con = getConnection();
+        
+        String sql = "select * from admin where adminEmail = ? and adminPassword = ?";
+        PreparedStatement ps;
+        
 
-    
-    
-    
-   
-    
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            
+            ResultSet result=ps.executeQuery();
+            
+            Admin admin = null;
+            
+            if(result.next()){
+                admin = new Admin();
+                admin.setAdminName(result.getString("Name"));
+                admin.setAdminEmail(email);
+            }          
+             con.close();      
+            return admin;    
+       
+    }
     
     
 }

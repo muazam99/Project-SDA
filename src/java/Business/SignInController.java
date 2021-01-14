@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Middleware.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -86,6 +87,7 @@ public class SignInController extends HttpServlet {
         
         
         try{
+           Admin admin = jdbcUtility.checkAdminLogin(email, password);
            SignIn signIn = jdbcUtility.checkLogin(email, password);
            String destPage = "index.jsp";
            
@@ -93,6 +95,11 @@ public class SignInController extends HttpServlet {
                       HttpSession session = request.getSession();
                       session.setAttribute("signIn", signIn);
                       destPage ="home.jsp";
+           }
+           if(admin != null){
+                      HttpSession session = request.getSession();
+                      session.setAttribute("admin", admin);
+                      destPage ="home2.jsp";
            }
            else{
                String message = "Invalid email or password";

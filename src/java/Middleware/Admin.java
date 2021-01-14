@@ -5,20 +5,86 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:30 PM
  */
-public class Admin extends User {
 
-	private String AdminEmail;
+package Middleware;
+
+public class Admin {
+
+    
+    
+         private String AdminEmail;
 	private String AdminID;
 	private String AdminName;
+        private String AdminPassword;
 	private AdminUI m_AdminUI;
+        
+        
+    /**
+     * @return the AdminEmail
+     */
+    public String getAdminEmail() {
+        return AdminEmail;
+    }
+
+    /**
+     * @param AdminEmail the AdminEmail to set
+     */
+    public void setAdminEmail(String AdminEmail) {
+        this.AdminEmail = AdminEmail;
+    }
+
+    /**
+     * @return the AdminID
+     */
+    public String getAdminID() {
+        return AdminID;
+    }
+
+    /**
+     * @param AdminID the AdminID to set
+     */
+    public void setAdminID(String AdminID) {
+        this.AdminID = AdminID;
+    }
+
+    /**
+     * @return the AdminName
+     */
+    public String getAdminName() {
+        return AdminName;
+    }
+
+    /**
+     * @param AdminName the AdminName to set
+     */
+    public void setAdminName(String AdminName) {
+        this.AdminName = AdminName;
+    }
+
+    /**
+     * @return the AdminPassword
+     */
+    public String getAdminPassword() {
+        return AdminPassword;
+    }
+
+    /**
+     * @param AdminPassword the AdminPassword to set
+     */
+    public void setAdminPassword(String AdminPassword) {
+        this.AdminPassword = AdminPassword;
+    }
+    
+      
+
+   
+	
 
 	public Admin(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+
 
 	public void dispError(){
 

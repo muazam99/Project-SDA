@@ -4,11 +4,14 @@
  * @author Asus
  * @version 1.0
  * @created 30-Dec-2020 10:06:33 PM
- */
+
+*/
+package Middleware;
+
 public class AdminUI {
 
 	//private Register m_Register;
-	private DeleteUser m_DeleteUser;
+	//private DeleteUser m_DeleteUser;
 
 	public AdminUI(){
 
@@ -25,10 +28,12 @@ public class AdminUI {
 	public String deleteUser(String ID){
 		return "";
 	}
-
+        
+        /*
 	public DeleteUser getDeleteUser(){
 		return m_DeleteUser;
 	}
+        */
 
 	
 
@@ -55,7 +60,8 @@ public class AdminUI {
 	/**
 	 * 
 	 * @param newVal
-	 */
+	 
+        
 	public void setDeleteUser(DeleteUser newVal){
 		m_DeleteUser = newVal;
 	}
