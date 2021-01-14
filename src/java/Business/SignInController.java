@@ -58,7 +58,7 @@ public class SignInController extends HttpServlet {
         jdbcUtility.jdbcConnect();
         
         //get JDC connection
-        //con = jdbcUtility.jdbcGetConnection();
+        con = jdbcUtility.jdbcGetConnection();
         
         //prepare the statement once only
         //for the entire servlet lifecycle
