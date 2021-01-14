@@ -44,10 +44,10 @@ public class SignInController extends HttpServlet {
         
         String driver = "com.mysql.jdbc.Driver";
         
-        String dbName = "alumni_account";
-        String url = "jdbc:mysql://localhost/" + dbName + "?";
-        String userName = "root";
-        String password = "";
+        String dbName = "E70UeYfD5B";
+        String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?sslmode=require";
+        String userName = "E70UeYfD5B";
+        String password = "z4TSaywGt9";
         
 
         jdbcUtility = new UserDAO(driver,
