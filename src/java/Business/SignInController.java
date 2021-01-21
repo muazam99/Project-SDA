@@ -99,7 +99,7 @@ public class SignInController extends HttpServlet {
            if(admin != null){
                       HttpSession session = request.getSession();
                       session.setAttribute("admin", admin);
-                      destPage ="home2.jsp";
+                      destPage ="adminHome.jsp";
            }
            else{
                String message = "Invalid email or password";

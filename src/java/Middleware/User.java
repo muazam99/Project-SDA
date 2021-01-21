@@ -5,42 +5,22 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:54 PM
  */
-public class User {
+
+package Middleware;
+
+public interface User {
 
 	//private Register m_Register;
 
-	public User(){
+	 void dispError();
 
-	}
+	 void displaySignInScreen();
 
-	public void finalize() throws Throwable {
+	 void dispPic();
 
-	}
+	 void dispSuccess();
 
-	public void dispError(){
+	 void dispUserAcc();
 
-	}
-
-	public void displaySignInScreen(){
-
-	}
-
-	public void dispPic(){
-
-	}
-
-	public void dispSuccess(){
-
-	}
-
-	public void dispUserAcc(){
-
-	}
-
-	
-
-	public void showSuggestions(){
-
-	}
-
+	 void showSuggestions();
 }

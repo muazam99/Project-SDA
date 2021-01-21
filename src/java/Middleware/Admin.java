@@ -8,7 +8,7 @@
 
 package Middleware;
 
-public class Admin {
+public class Admin implements User {
 
     
     
@@ -115,6 +115,7 @@ public class Admin {
 	}
 
 	public void dispUserAcc(){
+                   System.out.println("Admin");
 
 	}
 

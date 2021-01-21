@@ -1,3 +1,5 @@
+package Middleware;
+
 
 
 /**
@@ -5,7 +7,7 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:35 PM
  */
-public class Alumni extends User {
+public class Alumni implements User {
 
 	private String AlumniAddress;
 	protected String AlumniCurrentJob;
@@ -19,18 +21,16 @@ public class Alumni extends User {
 	private double AlumniSalaryPrevious;
 	private double AlumniSalaryuCurrent;
 	protected String AlumniSatus;
-	private Homepage m_Homepage;
+	
 
 	public Alumni(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+
 
 	public void dispError(){
-
+               System.out.println("Error");
 	}
 
 	public void displaySignInScreen(){
@@ -41,28 +41,12 @@ public class Alumni extends User {
 
 	}
 
-	public void dispReqScreen(){
-
-	}
-
 	public void dispSuccess(){
-
+               System.out.println("Success");
 	}
 
 	public void dispUserAcc(){
-
-	}
-
-	public Homepage getHomepage(){
-		return m_Homepage;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setHomepage(Homepage newVal){
-		m_Homepage = newVal;
+                   System.out.println("Alumni");
 	}
 
 	public void showSuggestions(){
