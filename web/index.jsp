@@ -79,6 +79,8 @@
                          <br>
                          <button type="submit" class="btn btn-primary">Login</button> Dont have an account yet? 
                            <a href="register.html"><button type="button" class="btn btn-danger" >Sign Up</button></a>
+                            <a href="databaseController"><button type="button" class="btn btn-danger" >getData</button></a>
+
                      </form>
                   </div>
                </div>

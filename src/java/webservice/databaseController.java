@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,16 +28,18 @@ import jdbc.UserDAO;
  *
  * @author Muaz Amir
  */
-@Path("databaseController")
+@WebServlet(name = "databaseController", urlPatterns = {"/databaseController"})
 
-public class databaseController {
+
+public class databaseController extends HttpServlet{
     
     private UserDAO jdbcUtility;
     private Connection con;
+    
 
     
     public ArrayList<database> getDataInJSON(HttpServletRequest request, 
-            HttpServletResponse response) throws ServletException, IOException, SQLException
+            HttpServletResponse response) throws ServletException, IOException
     {
 
       
@@ -57,7 +61,7 @@ public class databaseController {
         //get JDC connection
         con = jdbcUtility.jdbcGetConnection();
         
-        String query = "Select * from alumni ";
+        String query = "Select * from alumni";
         HttpSession session =  request.getSession();
         
        ArrayList<database> dbb=new ArrayList<database>();
@@ -82,7 +86,7 @@ public class databaseController {
             db.setStatus(rs.getString("Status"));
             dbb.add(db);
         }   
-        session.setAttribute("userList", db);
+        session.setAttribute("userList", dbb);
         
         /*
         String query2 ="Select * from admin";
@@ -111,9 +115,9 @@ public class databaseController {
              return dbb;    
     }
     
-   
-        public void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException, SQLException{
+  @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException{
             response.setContentType("text/html");
             try (PrintWriter out = response.getWriter()){
                 ArrayList<database> db = getDataInJSON(request, response);
@@ -125,6 +129,7 @@ public class databaseController {
                 out.close();
             }
         }
+    
       
 }
 
