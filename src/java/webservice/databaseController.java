@@ -5,6 +5,9 @@
  */
 package webservice;
 
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,6 +15,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -23,28 +29,31 @@ import jdbc.UserDAO;
  * @author Muaz Amir
  */
 @Path("databaseController")
+
 public class databaseController {
     
     private UserDAO jdbcUtility;
     private Connection con;
     
+    
+    
     @GET
     @Path("/getdata")
     @Produces(MediaType.APPLICATION_JSON)
+    
    
     
-    public ArrayList<database> getDataInJSON() throws ClassNotFoundException, SQLException
+    public ArrayList<database> getDataInJSON(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException, SQLException
     {
-        
-        
-       
+
       
         String driver = "com.mysql.jdbc.Driver";
         
-        String dbName = "alumni_account";
-        String url = "jdbc:mysql://localhost/" + dbName + "?" ;
-        String userName = "root";
-        String password = "";
+        String dbName = "E70UeYfD5B";
+        String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?sslmode=require";
+        String userName = "E70UeYfD5B";
+        String password = "z4TSaywGt9";
         
 
         jdbcUtility = new UserDAO(driver,
@@ -58,14 +67,17 @@ public class databaseController {
         con = jdbcUtility.jdbcGetConnection();
         
         String query = "Select * from alumni ";
-       ArrayList<database> dbb=new ArrayList<>();
-       
-        Statement st=con.createStatement();
-        ResultSet rs=st.executeQuery(query);
+        HttpSession session =  request.getSession();
         
-        while(rs.next())
+       ArrayList<database> dbb=new ArrayList<database>();
+        database db = new database();
+        try{
+               Statement st=con.createStatement();
+               ResultSet rs=st.executeQuery(query);
+               
+               while(rs.next())
         {
-            database db = new database();
+           
             db.setAddress(rs.getString("Address"));
             db.setCurrentJob(rs.getString("CurrentJob"));
             db.setEmail(rs.getString("Email"));
@@ -79,20 +91,52 @@ public class databaseController {
             db.setStatus(rs.getString("Status"));
             dbb.add(db);
         }   
+        session.setAttribute("userList", db);
         
+        /*
         String query2 ="Select * from admin";
         rs = st.executeQuery(query2);
         
         while(rs.next()){
-            database db = new database();
+            
             db.setAdminEmail(rs.getString("AdminEmail"));
             db.setAdminID(rs.getString("AdminID"));
             db.setAdminName(rs.getString("AdminName"));
             db.setAdminPassword(rs.getString("AdminPassword"));
             dbb.add(db);
         }
-        
+        */
+         
+        }
+             catch(SQLException ex) {
+                System.out.println(ex.getMessage());
+            } 
+            catch (NullPointerException e) {
+            try (PrintWriter out = response.getWriter()) {
+                    out.println("ADA ERROR WOI!");
+                } 
+     
+            }
              return dbb;    
     }
+    
+   
+        public void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException, SQLException{
+            response.setContentType("text/html");
+            try (PrintWriter out = response.getWriter()){
+                ArrayList<database> db = getDataInJSON(request, response);
+                Gson gson = new Gson();
+                String jsonString = gson.toJson(db);
+
+                out.println(jsonString);
+
+                out.close();
+            }
+        }
       
 }
+
+
+
+
