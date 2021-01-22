@@ -18,10 +18,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+
 import jdbc.UserDAO;
 
 /**
@@ -34,14 +32,7 @@ public class databaseController {
     
     private UserDAO jdbcUtility;
     private Connection con;
-    
-    
-    
-    @GET
-    @Path("/getdata")
-    @Produces(MediaType.APPLICATION_JSON)
-    
-   
+
     
     public ArrayList<database> getDataInJSON(HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException, SQLException
