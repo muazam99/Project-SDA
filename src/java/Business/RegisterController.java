@@ -32,12 +32,12 @@ public class RegisterController extends HttpServlet{
     @Override
     public void init() throws ServletException{
         
-        String driver = "com.mysql.jdbc.Driver";
+      String driver = "com.mysql.jdbc.Driver";
         
-        String dbName = "E70UeYfD5B";
-        String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?sslmode=require";
-        String userName = "E70UeYfD5B";
-        String password = "z4TSaywGt9";
+           String dbName = "sdadatabase";
+        String url = "jdbc:mysql://localhost/" + dbName + "?";
+        String userName = "root";
+        String password = "";
         
 
         jdbcUtility = new UserDAO(driver,
@@ -71,7 +71,8 @@ public class RegisterController extends HttpServlet{
          String password = request.getParameter("password");
          String Address = request.getParameter("Address");
          String Email = request.getParameter("Email");
-	 String CurrentJob = request.getParameter("CurrentJob");	 
+	 String CurrentJob = request.getParameter("CurrentJob");
+         String qualification = request.getParameter("qualification");
 	 int GraduateYear = Integer.parseInt(request.getParameter("GraduateYear"));	 
 	 String PhoneNo = request.getParameter("PhoneNo");
 	 String PreviousJob = request.getParameter("PreviousJob");
@@ -86,12 +87,13 @@ public class RegisterController extends HttpServlet{
              preparedStatement.setString(3, Address);
              preparedStatement.setString(4,Email);
              preparedStatement.setString(5, CurrentJob);            
-             preparedStatement.setInt(6,GraduateYear);
-             preparedStatement.setString(7,PhoneNo);
-             preparedStatement.setString(8,PreviousJob);
-             preparedStatement.setDouble(9,SalaryPrevious);
-             preparedStatement.setDouble(10,SalaryCurrent);     
-             preparedStatement.setString(11,Status);
+             preparedStatement.setString(6, qualification);    
+             preparedStatement.setInt(7,GraduateYear);
+             preparedStatement.setString(8,PhoneNo);
+             preparedStatement.setString(9,PreviousJob);
+             preparedStatement.setDouble(10,SalaryPrevious);
+             preparedStatement.setDouble(11,SalaryCurrent);     
+             preparedStatement.setString(12,Status);
              
              int insertStatus = 0;
              insertStatus = preparedStatement.executeUpdate();
@@ -103,7 +105,7 @@ public class RegisterController extends HttpServlet{
              if(insertStatus == 1){
                  out.println("<script>");
                  out.println("  alert('Register Success');");
-                 out.println("    window.location = '/index.jsp'");
+                 out.println("    window.location.href  = '/integratedallsysmtem/index.jsp'");
                  out.println("</script>");
          }
          }
@@ -121,7 +123,7 @@ public class RegisterController extends HttpServlet{
             
             out.println("<script>");
             out.println("    alert('alumni insert failed sqlexception ');");
-            out.println("    window.location = '/register.html'");
+            out.println("    window.location.href = '/register.html'");
             out.println("</script>");            
 	}
 	catch (java.lang.Exception ex)
@@ -137,7 +139,7 @@ public class RegisterController extends HttpServlet{
             out.println("</script>");
 	}    
          
-         
+            
     }
     }
                 
