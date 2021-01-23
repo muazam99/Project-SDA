@@ -86,7 +86,7 @@ public class databaseController extends HttpServlet{
             db.setStatus(rs.getString("Status"));
             dbb.add(db);
         }   
-        session.setAttribute("userList", dbb);
+        session.setAttribute("dbb", dbb);
         
         /*
         String query2 ="Select * from admin";
