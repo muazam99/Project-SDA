@@ -14,11 +14,12 @@
       <meta name="description" content="">
       <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
       <meta name="generator" content="Jekyll v4.1.1">
-      <title>Alumni FABU</title>
+      <title>Alumni</title>
 
       <!-- Bootstrap core CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
 
+      
       <style>
          .bd-placeholder-img {
            font-size: 1.125rem;
@@ -39,7 +40,7 @@
       <!-- Custom styles for this template -->
       <link href="css/navbar-top-fixed.css" rel="stylesheet">
    </head>
-
+ 
    <body>
 
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

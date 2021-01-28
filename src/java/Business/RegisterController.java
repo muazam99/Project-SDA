@@ -79,6 +79,8 @@ public class RegisterController extends HttpServlet{
          double SalaryPrevious = Double.parseDouble(request.getParameter("SalaryPrevious"));
 	 double SalaryCurrent = Double.parseDouble(request.getParameter("SalaryCurrent"));	 
          String Status = request.getParameter("Status");
+         
+         
          try{
              PreparedStatement preparedStatement = jdbcUtility.getPsRegister();
              
@@ -109,6 +111,9 @@ public class RegisterController extends HttpServlet{
                  out.println("</script>");
          }
          }
+         
+         
+         
          catch (SQLException ex)
 	{
             while (ex != null) {
