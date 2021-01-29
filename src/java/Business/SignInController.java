@@ -46,7 +46,7 @@ public class SignInController extends HttpServlet {
     public void init() throws ServletException{
         
          String driver = "com.mysql.jdbc.Driver"; 
-        String dbName = "alumni_Database";
+        String dbName = "alumni_database";
         String url = "jdbc:mysql://localhost/" + dbName + "?";
         String userName = "root";
         String password = "";

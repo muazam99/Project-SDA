@@ -85,16 +85,20 @@ public class UserDAO {
         
     }
     
+    
     public void prepareSQLStatementRegister(){
         
         try {
            
             //create SQL statement
-              String insert_users ="INSERT INTO alumniuser(Name, password, Address, Email,CurrentJob, qualification,GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
-                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";            
+              String insert_users ="INSERT INTO alumni(Title ,Alumniname, password, Alumnimatric, Gender,Alumnicitizenship, Alumniemail,Phoneno, Coursename ,Edulevel, GraduateYear,AlumniaddressID ) " +
+                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";     
+              
             
             //prepare statement
-            psRegisterController = con.prepareStatement(insert_users);            
+           
+            psRegisterController = con.prepareStatement(insert_users);    
+            
         }
         catch (SQLException ex){
             
@@ -149,7 +153,7 @@ public class UserDAO {
         loadDriver(driver);
         Connection con = getConnection();
         
-        String sql = "select * from alumniuser where Email = ? and password = ?";
+        String sql = "select * from alumni where Alumniemail = ? and password = ?";
         PreparedStatement ps;
         
 
@@ -163,7 +167,7 @@ public class UserDAO {
             
             if(result.next()){
                 signIn = new SignIn();
-                signIn.setName(result.getString("Name"));
+                signIn.setName(result.getString("Alumniname"));
                 signIn.setEmail(email);
             }
              con.close();      
