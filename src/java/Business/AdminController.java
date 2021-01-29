@@ -1,11 +1,15 @@
 package Business;
 
+import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +32,7 @@ import jdbc.UserDAO;
 public class AdminController extends HttpServlet{
     
     private UserDAO userdao;
+    private AlumniDAO alumniDao;
 
     private Connection con;
 
@@ -95,9 +100,7 @@ public class AdminController extends HttpServlet{
                     break;
                     
                 case "Delete-User":
-                     if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("deleteUser.jsp").forward(request, response);
-                    }                
+                     getAlumniList(request, response);                  
                     break;
 
                     
@@ -155,6 +158,19 @@ public class AdminController extends HttpServlet{
             
             
      }
+     
+     
+       public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.getRequestDispatcher("deleteUser.jsp").forward(request, response);
+            List<Alumni> alumnis = alumniDao.getAlumniList();       
+            System.out.println(alumnis.get(0).toString());
+            request.setAttribute("ALUMNI_LIST", alumnis);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void AddUser(HttpServletRequest request, HttpServletResponse response) throws IOException , ServletException{
         

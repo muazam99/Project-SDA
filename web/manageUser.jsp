@@ -59,7 +59,7 @@
             <div class="col-md-3">
                 <div class="card" style="width: 25rem;">
                  <img src="image/delete_user.png" class="card-img-top" alt="addUser">
-                  <a href="#" class="btn btn-danger btn-lg">Delete User</a>
+                  <a href="AdminController?command=Delete-User" class="btn btn-danger btn-lg">Delete User</a>
               </div>
             </div> 
             

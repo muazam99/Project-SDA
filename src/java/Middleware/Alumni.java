@@ -7,17 +7,14 @@ package Middleware;
  */
 public class Alumni implements User {
 
-    private String AlumniAddress;
+
     protected String AlumniCurrentJob;
     protected String AlumniEmail;
     protected int AlumniGraduateYear;
     protected String AlumniLocation;
     protected String AlumniMembershipNo;
     protected String AlumniName;
-    private String AlumniPhoneNo;
-    private String AlumniPreviousJob;
-    private double AlumniSalaryPrevious;
-    private double AlumniSalaryuCurrent;
+
     protected String AlumniSatus;
     private String alumniCitizenship;
     private String alumniEmail;

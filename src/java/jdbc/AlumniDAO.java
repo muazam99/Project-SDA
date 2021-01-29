@@ -133,6 +133,46 @@ public class AlumniDAO {
 
         return null;
     }
+    
+    public List<Alumni> getAlumniList() {
+        List<Alumni> alumnis = new ArrayList<>();
+
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, userName, password);
+            // create sql statement
+            //check if email exists
+            String sql = "SELECT * FROM `alumni`";
+
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //process resultset
+            while (rs.next()) {
+                Alumni foundAlumni = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Edulevel"), rs.getString("Gender"), rs.getInt("Graduateyear"), rs.getString("Title"));
+
+                //list of all managers
+                alumnis.add(foundAlumni);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+        return alumnis;
+    }
 
    
 
