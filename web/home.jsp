@@ -17,7 +17,7 @@
         <title>Alumni FABU</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="CSS/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
