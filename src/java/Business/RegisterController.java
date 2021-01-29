@@ -32,7 +32,7 @@ public class RegisterController extends HttpServlet {
 
         String driver = "com.mysql.jdbc.Driver";
 
-        String dbName = "Alumni_Database";
+        String dbName = "alumni_Database";
         String url = "jdbc:mysql://localhost/" + dbName + "?";
         String userName = "root";
         String password = "";

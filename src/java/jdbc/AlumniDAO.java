@@ -45,8 +45,18 @@ public class AlumniDAO {
         this.password = password;
     }
 
-    public AlumniDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    
+    private Alumni alumni;
+
+    private AlumniDAO() {
+        try {
+            Thread.sleep(1000);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     
     
