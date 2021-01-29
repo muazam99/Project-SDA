@@ -28,15 +28,15 @@ public class AdminController extends HttpServlet{
             switch(command){
                 
                 case "Manage-User":
-                    getManageUserInfo(request , response);
+                    getManageUserPage(request , response);
                     break;
                     
                 case "Add-User":
-                    getAddUser(request , response );
+                    getAddUserPage(request , response );
                     break;
                     
                 case "Delete-User":
-                    getDeleteUser(request , response);
+                    getDeleteUserPage(request , response);
                     break;
                    
                  default:
@@ -64,7 +64,32 @@ public class AdminController extends HttpServlet{
             e.printStackTrace();
              }
         }
+        
+       public void getManageUserPage(HttpServletRequest request, HttpServletResponse response) {
+        
+       HttpSession session = request.getSession();
+        RequestDispatcher dispatcher;
 
-	
+        dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
+
+       }
+       
+       public void getAddUserPage(HttpServletRequest request, HttpServletResponse response) {
+        
+       HttpSession session = request.getSession();
+        RequestDispatcher dispatcher;
+
+        dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
+
+       }
+       
+        public void getDeleteUserPage(HttpServletRequest request, HttpServletResponse response) {
+        
+       HttpSession session = request.getSession();
+        RequestDispatcher dispatcher;
+
+        dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
+
+       }
 
 }

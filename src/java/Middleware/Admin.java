@@ -138,7 +138,7 @@ public class Admin implements User {
          @Override
      public String dispWelcome(){
         
-        String destPage =   "home.jsp"; 
+        String destPage =   "adminHome.jsp"; 
         return destPage;
         
     }
