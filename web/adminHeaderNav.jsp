@@ -16,7 +16,7 @@
                   </li>
                    
                   <li class="nav-item active">
-                    <a class="nav-link" href="AdminController?command=getManageUserPage">Manage User</a>
+                    <a class="nav-link" href="AdminController?command=Manage-User">Manage User</a>
                   </li>
                     <li class="nav-item active">
                     <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">View Alumni</a>
