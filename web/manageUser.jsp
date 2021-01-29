@@ -41,8 +41,39 @@
     <body>
         
         <jsp:include page="adminHeaderNav.jsp" />    
-       
-        <p> TEST..... </p>
-        adsadasd
+
+        
+        <div class="row">
+            
+            <div class="col-md-3">
+                
+            </div>
+            
+            <div class="col-md-3">
+                <div class="card" style="width: 22rem;">
+                 <img src="image/add_user.png" class="card-img-top" alt="addUser">
+                  <a href="AdminController?command=Add-User" class="btn btn-primary btn-lg">Add User</a>
+              </div>
+            </div> 
+            
+            <div class="col-md-3">
+                <div class="card" style="width: 25rem;">
+                 <img src="image/delete_user.png" class="card-img-top" alt="addUser">
+                  <a href="#" class="btn btn-primary btn-lg">Delete User</a>
+              </div>
+            </div> 
+            
+            <div class="col-md-3">
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        
     </body>
 </html>

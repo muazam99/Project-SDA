@@ -41,19 +41,19 @@ public class AdminController extends HttpServlet{
                 
                 case "Manage-User":
                     if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("/Admin/manageUser.jsp").forward(request, response);
+                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
                     }
                     break;
                     
                 case "Add-User":
                      if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
+                        request.getRequestDispatcher("addUser.jsp").forward(request, response);
                     }
                     break;
                     
                 case "Delete-User":
                      if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
+                        request.getRequestDispatcher("deleteUser.jsp").forward(request, response);
                     }
                     
                     break;
