@@ -41,8 +41,16 @@
     </head>
 
     <body>
-
-   <jsp:include page="headerNav.jsp" />    
+        
+        <c:choose>
+            <c:when test="${signIn != null}">
+                <jsp:include page="headerNav.jsp" />  
+            </c:when>
+            <c:when test="${admin != null}">
+                <jsp:include page="adminHeaderNav.jsp" />  
+            </c:when>
+        </c:choose>
+ 
 
         <main role="main" class="container">
 

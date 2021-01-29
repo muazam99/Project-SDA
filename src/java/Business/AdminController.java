@@ -1,3 +1,13 @@
+package Business;
+
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 
 /**
@@ -5,44 +15,56 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:32 PM
  */
-public class AdminController {
+public class AdminController extends HttpServlet{
 
-	private Database m_Database;
+	    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String command = request.getParameter("command");
+        
+        try{
+            
+            switch(command){
+                
+                case "Manage-User":
+                    getManageUserInfo(request , response);
+                    break;
+                    
+                case "Add-User":
+                    getAddUser(request , response );
+                    break;
+                    
+                case "Delete-User":
+                    getDeleteUser(request , response);
+                    break;
+                   
+                 default:
+                     getHomePage(request , response);
+            }
+        
+        
+        }catch (Exception exc) {
+            throw new ServletException(exc);
+        }
 
-	public AdminController(){
+        }
+    
+        public void getHomePage(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        RequestDispatcher dispatcher;
 
-	}
+        try {
+            if (session.getAttribute("admin") != null) {
+                dispatcher = request.getRequestDispatcher("adminHome.jsp");
+            } else {
+                dispatcher = request.getRequestDispatcher("home.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+             }
+        }
 
-	public void finalize() throws Throwable {
-
-	}
-
-	/**
-	 * 
-	 * @param ID
-	 */
-	public String delete(String ID){
-		return "";
-	}
-
-	public Database getDatabase(){
-		return m_Database;
-	}
-
-	/**
-	 * 
-	 * @param ID
-	 */
-	public String SearchUsername(String ID){
-		return "";
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setDatabase(Database newVal){
-		m_Database = newVal;
-	}
+	
 
 }

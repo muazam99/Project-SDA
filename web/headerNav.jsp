@@ -7,18 +7,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="home.jsp">Home</a>
                     </li>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="AlumniController?command=MY-PROFILE">MyProfile</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
-                    </li>
-
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
-                    </li>
+                 
                 </ul>
 
                 <ul class="navbar-nav">

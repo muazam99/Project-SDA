@@ -14,14 +14,12 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="adminHome.jsp">Home</a>
                   </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="reportHomeAdmin.jsp">Report</a>
-                  </li>
+                   
                   <li class="nav-item active">
-                    <a class="nav-link" href="javascript:;">Manage User</a>
+                    <a class="nav-link" href="">Manage User</a>
                   </li>
                     <li class="nav-item active">
-                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Alumni</a>
+                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">View Alumni</a>
                   </li>
                   
                </ul>
