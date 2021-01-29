@@ -73,7 +73,7 @@ public class RegisterController extends HttpServlet {
         String Email = request.getParameter("Email");
         String GraduateYear = request.getParameter("GraduateYear");
         String Phoneno = request.getParameter("Phoneno");
-        String courseName = request.getParameter("courseName");
+        String Coursename = request.getParameter("Coursename");
 
         String Houseno = request.getParameter("Houseno");
         String Streetname = request.getParameter("Streetname");
@@ -100,7 +100,7 @@ public class RegisterController extends HttpServlet {
             preparedStatement.setString(6, citizenship);
             preparedStatement.setString(7, Email);
             preparedStatement.setString(8, Phoneno);
-            preparedStatement.setString(9, courseName);
+            preparedStatement.setString(9, Coursename);
             preparedStatement.setString(10, edulevel);
             preparedStatement.setString(11, GraduateYear);
             preparedStatement.setString(12, id);

@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <h2>Add New User</h2>
                             <br>
-                            <form action="RegisterController" method="post">
+                            <form action="AdminController?command=Add-User" method="post">
 
                                 <label for="floatingPassword"><b>Name</b></label>
                                 <div class="input-group mb-3">
@@ -123,7 +123,7 @@
 
                                 <div class="form-floating">
                                     <label for="floatingInput"><b>Course name</b></label>
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Architecture" name="coursename" required>           
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Architecture" name="Coursename" required>           
                                 </div>
 
                                 <label for="floatingInput"><b>Education Level</b></label><br>
