@@ -40,7 +40,7 @@
     </head>
     <body>
         
-        <jsp:include page="../adminHeaderNav.jsp" />    
+        <jsp:include page="adminHeaderNav.jsp" />    
        
         <p> TEST..... </p>
         adsadasd

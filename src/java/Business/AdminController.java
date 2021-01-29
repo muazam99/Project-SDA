@@ -24,7 +24,12 @@ public class AdminController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession session = request.getSession();
         String command = request.getParameter("command");
+        
+        if(command==null){
+            command="";
+        }
         
         try{
             
@@ -35,19 +40,29 @@ public class AdminController extends HttpServlet{
             switch(command){
                 
                 case "Manage-User":
-                    getManageUserPage(request , response);
+                    if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("/Admin/manageUser.jsp").forward(request, response);
+                    }
                     break;
                     
                 case "Add-User":
-                    getAddUserPage(request , response );
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
+                    }
                     break;
                     
                 case "Delete-User":
-                    getDeleteUserPage(request , response);
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
+                    }
+                    
                     break;
                    
                  default:
-                     getHomePage(request , response);
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+                    }
+                     break;
             }
         
         
@@ -55,61 +70,8 @@ public class AdminController extends HttpServlet{
             throw new ServletException(exc);
         }
 
-        }
-    
-        public void getHomePage(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        RequestDispatcher dispatcher;
-
-        try {
-            if (session.getAttribute("admin") != null) {
-                dispatcher = request.getRequestDispatcher("adminHome.jsp");
-            } else {
-                dispatcher = request.getRequestDispatcher("home.jsp");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-             }
-        }
+     
         
-       public void getManageUserPage(HttpServletRequest request, HttpServletResponse response) {
-        
-       HttpSession session = request.getSession();
-        RequestDispatcher dispatcher;
-        
-         try {
-            if (session.getAttribute("admin") != null) {
-                
-                dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
-            } else {
-                dispatcher = request.getRequestDispatcher("home.jsp");
-            }
-            
-                        dispatcher.forward(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-       }
-       
-       public void getAddUserPage(HttpServletRequest request, HttpServletResponse response) {
-        
-       HttpSession session = request.getSession();
-        RequestDispatcher dispatcher;
-
-        dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
-
-       }
-       
-        public void getDeleteUserPage(HttpServletRequest request, HttpServletResponse response) {
-        
-       HttpSession session = request.getSession();
-        RequestDispatcher dispatcher;
-
-        dispatcher = request.getRequestDispatcher("/Admin/manageUser.jsp");
-
-       }
+    }
 
 }
