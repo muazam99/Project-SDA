@@ -1,69 +1,110 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
 <%@ page session="true" %>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-                <link href="./css/alumni_style.css" rel="stylesheet" /> 
-                <link href="./css/view_profile.css" rel="stylesheet" />-->
-        <jsp:include page="bootstrap5.jsp" /> 
-    </head>
-    <body>
-       
+    
+        <title>View Alumni</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+        <!-- Custom styles for this template -->
+        <link href="css/navbar-top-fixed.css" rel="stylesheet">
+        </head>
+           <body class="sb-nav-fixed">
+            <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
+             url = "jdbc:mysql://localhost/alumni_database"
+             user = "root"  password = ""/>
+             <sql:query dataSource = "${snapshot}" var = "result">
+                SELECT * from alumni;
+             </sql:query>
+             
                 <jsp:include page="adminHeaderNav.jsp" />  
             
         <main class="main mt-5 d-flex flex-column justify-content-start">
             <h2 class="text-center my-5">List Of Alumnis</h2>
             <hr class="container-md"/>
-            <div class="container d-flex flex-column align-items-center" style="margin-top:30px">
+         <div class="container d-flex flex-column align-items-center" style="margin-top:30px">
               
 
 
 
                 <div class="col-sm-10 d-flex flex-column align-items-end">
 
+              <c:forEach var="row" items="${result.rows}">
+                    <table class="table table-striped table-bordered border-primary">
+                        <tbody>
+                             <tr >                                 
+                                 <td  rowspan="6">
+                                    <img class="vector-6QVaxv"
+                                         src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" width="100" height="100"
+                                        /> 
+                                 </td>
 
-                    <table class="table border rounded table-bordered caption-top">
-                          <caption>List of Alumni</caption>
-                        <c:forEach var="tempAlumni" items="${ALUMNI_LIST}">
-                            <tr class="spaceUnder"><td  class="d-flex flex-row justify-content-center" rowspan="2">
-
-                                    <img
-                                        class="vector-6QVaxv"
-                                        src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-4@2x.svg"
-                                        /> </td>
-                                <td colspan="2">
-                                    ${tempAlumni.alumniName}
-                                </td>
-                                <td class="d-flex flex-row justify-content-center" rowspan="2"> 
-
-                                    <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${tempAlumni.alumniEmail}">  
-
-                                        <button type="button" class="btn btn-info">VIEW</button></a>
-                                </td>
-                            </tr>
-                            <tr><td colspan="2" class="d-flex flex-row justify-content-center ">
-                                    UTM Alumni
-                                </td>
-                                <td colspan="4">
-                                    <div class="graduation-year-20 border-class-1 comfortaa-regular-normal-black-16px">
-                                        Graduation year : ${tempAlumni.graduateYear}
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </table>
+                             </tr>
+                                         <tr>
+                                            <td>No:</td>
+                                            <td>${row.AlumniID}</td>
+                                            <td  rowspan="5"> 
+                                                <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${row.Alumniemail}">  
+                                                <button type="button" class="btn btn-info">VIEW</button></a>
+                                                <br><br>
+                                                <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${row.alumniEmail}">  
+                                                <button type="button" class="btn btn-danger">Delete</button></a>
+                                        
+                                             </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Name :</td>
+                                            <td>${row.Alumniname}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Matrics No.:</td>
+                                            <td>${row.Alumnimatric}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email :</td>
+                                            <td>${row.Alumniemail}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone no. :</td>
+                                            <td>${row.Phoneno}</td>
+                                        </tr>
+                               
+                           </tbody>
+                       
+                        </table>
+                     </c:forEach>
                 </div>  
 
             </div>
         </main>
-
+      
 
 
 
