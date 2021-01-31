@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <h2>Add New User</h2>
                             <br>
-                            <form action="AdminController?command=Add-User" method="post">
+                            <form action="AdminController?command=Add-Alumni" method="post">
 
                                 <label for="floatingPassword"><b>Name</b></label>
                                 <div class="input-group mb-3">

@@ -45,27 +45,32 @@
         
         <div class="row">
             
-            <div class="col-md-3">
+            <div class="col-md-1">
                 
             </div>
             
             <div class="col-md-3">
-                <div class="card" style="width: 22rem;">
-                 <img src="image/add_user.png" class="card-img-top" alt="addUser">
-                  <a href="AdminController?command=Add-User-Page" class="btn btn-primary btn-lg">Add User</a>
+                <div class="card" >
+                 <img src="image/add_user.png" class="card-img-top" alt="addUser" width="200" height="400">
+                  <a href="AdminController?command=Add-Alumni-Page" class="btn btn-primary btn-lg">Add Alumni</a>
               </div>
             </div> 
             
             <div class="col-md-3">
-                <div class="card" style="width: 25rem;">
-                 <img src="image/delete_user.png" class="card-img-top" alt="addUser">
-                  <a href="AdminController?command=Delete-User-Page" class="btn btn-danger btn-lg">Delete User</a>
+                <div class="card">
+                    <img src="image/delete_user.png" class="card-img-top" alt="deleteUser" width="200" height="400">
+                  <a href="AdminController?command=Delete-Alumni-Page" class="btn btn-danger btn-lg">Delete Alumni</a>
               </div>
             </div> 
             
-            <div class="col-md-3">
-                
+             <div class="col-md-3">
+                <div class="card">
+                 <img src="image/view_user.png" class="card-img-top" alt="viewAlumni" >
+                  <a href="AdminController?command=View-Alumni-Page" class="btn btn-danger btn-lg">View Alumni</a>
+              </div>
             </div>
+            
+           
             
         </div>
         

@@ -88,23 +88,31 @@ public class AdminController extends HttpServlet{
             
             switch(command){
                 
-                case "Manage-User":
+                case "Manage-Alumni":
                     if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("manageUser.jsp").forward(request, response);
+                        request.getRequestDispatcher("manageAlumni.jsp").forward(request, response);
                     }
                     break;
                     
-                case "Add-User-Page":
+                case "Add-Alumni-Page":
                      if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("addUser.jsp").forward(request, response);
+                        request.getRequestDispatcher("addAlumni.jsp").forward(request, response);
                     }
                     break;
                     
-                case "Delete-User-Page":
+                case "Delete-Alumni-Page":
                      getAlumniList(request, response);                  
                     break;
+                    
+                case "View-Alumni-Page":
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("viewAlumni.jsp").forward(request, response);
+                    }
+                    break;
+                    
+              
                 
-                case "Delete-User":
+                case "Delete-Alumni":
                     String id = request.getParameter("id");
                     try{
                     Statement st = con.createStatement();           
@@ -118,7 +126,7 @@ public class AdminController extends HttpServlet{
                     
                     out.println("<script>");
                         out.println("    alert('User Deleted Successfully!');");
-                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-User-Page'");
+                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-Alumni-Page'");
                     out.println("</script>");
                    
                     
@@ -158,7 +166,7 @@ public class AdminController extends HttpServlet{
             
             switch(command){
 
-                    case "Add-User":    
+                    case "Add-Alumni":    
                       AddUser(request, response);
                       break;
                       
@@ -183,7 +191,7 @@ public class AdminController extends HttpServlet{
      
        public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.getRequestDispatcher("deleteUser.jsp").forward(request, response);
+            request.getRequestDispatcher("deleteAlumni.jsp").forward(request, response);
             List<Alumni> alumnis = alumniDao.getAlumniList();       
             System.out.println(alumnis.get(0).toString());
             request.setAttribute("ALUMNI_LIST", alumnis);
@@ -192,6 +200,8 @@ public class AdminController extends HttpServlet{
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       
+    
     
     public void AddUser(HttpServletRequest request, HttpServletResponse response) throws IOException , ServletException{
         
@@ -245,7 +255,7 @@ public class AdminController extends HttpServlet{
                 try (PrintWriter out = response.getWriter()) {
                         out.println("<script>");
                         out.println("    alert('USER ADDED SUCCESSFULLY!');");
-                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Manage-User'");
+                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Manage-Alumni'");
                         out.println("</script>");
                 } 
             }
@@ -263,7 +273,7 @@ public class AdminController extends HttpServlet{
 
             out.println("<script>");
             out.println("    alert('alumni insert failed sqlexception ');");
-            out.println("    window.location.href  = '/integratedallsysmtem/manageUser.jsp'");
+            out.println("    window.location.href  = '/integratedallsysmtem/manageAlumni.jsp'");
             out.println("</script>");
         } catch (java.lang.Exception ex) {
             ex.printStackTrace();
@@ -272,7 +282,7 @@ public class AdminController extends HttpServlet{
 
             out.println("<script>");
             out.println("    alert('alumni insert failed exception');");
-            out.println("    window.location.href  = '/integratedallsysmtem/manageUser.jsp'");
+            out.println("    window.location.href  = '/integratedallsysmtem/manageAlumni.jsp'");
             out.println("</script>");
         }
 

@@ -36,7 +36,7 @@
         </head>
            <body class="sb-nav-fixed">
             <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-             url = "jdbc:mysql://localhost/alumni_database"
+             url = "jdbc:mysql://localhost/sdadatabase"
              user = "root"  password = ""/>
              <sql:query dataSource = "${snapshot}" var = "result">
                 SELECT * from alumni;
@@ -68,15 +68,7 @@
                                          <tr>
                                             <td>No:</td>
                                             <td>${row.AlumniID}</td>
-                                            <td  rowspan="5"> 
-                                                <a href="AdminController?command=ALUMNI-INFO&alumniID=${row.alumniID}">  
-                                                <button type="button" class="btn btn-info">VIEW</button></a>
-                                                <br><br>
-                                                <a href="AdminController?command=Delete-User&id=${row.alumniID}">  
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteSuccessful">Delete</button></a>
-                                                     <button type="button" class="btn btn-info" id="test">TEST</button></a>
-
-                                              
+        
                                              </td>
                                         </tr>
                                         
