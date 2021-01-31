@@ -65,7 +65,7 @@
             
              <div class="col-md-3">
                 <div class="card">
-                 <img src="image/view_user.png" class="card-img-top" alt="viewAlumni" >
+                 <img src="image/view_user.png" class="card-img-top" alt="viewAlumni" width="200" height="400">
                   <a href="AdminController?command=View-Alumni-Page" class="btn btn-danger btn-lg">View Alumni</a>
               </div>
             </div>

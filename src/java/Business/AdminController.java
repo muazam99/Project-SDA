@@ -94,12 +94,6 @@ public class AdminController extends HttpServlet{
                     }
                     break;
                     
-                case "Manage-Admin":
-                    if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("manageAdmin.jsp").forward(request, response);
-                    }
-                    break;
-                    
                 case "Add-Alumni-Page":
                      if(session.getAttribute("admin")!=null){
                         request.getRequestDispatcher("addAlumni.jsp").forward(request, response);
@@ -115,15 +109,7 @@ public class AdminController extends HttpServlet{
                         request.getRequestDispatcher("viewAlumni.jsp").forward(request, response);
                     }
                     break;
-                    
-               case "Add-Admin-Page":
-                     if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("addAdmin.jsp").forward(request, response);
-                    }
-                    break;
-                    
-              
-                
+            
                 case "Delete-Alumni":
                     String id = request.getParameter("id");
                     try{
@@ -143,7 +129,56 @@ public class AdminController extends HttpServlet{
                    
                     
                     break;
+                
+                 //
+                 // ADMIN 
+                 //
+                    
+               case "Manage-Admin":
+                    if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("manageAdmin.jsp").forward(request, response);
+                    }
+                    break;
+                    
+               case "Add-Admin-Page":
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("addAdmin.jsp").forward(request, response);
+                    }
+                    break;
+                    
+                case "Delete-Admin-Page":
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("deleteAdmin.jsp").forward(request, response);
+                    }
+                    break;
+                 
+                 case "View-Admin-Page":
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("viewAdmin.jsp").forward(request, response);
+                    }
+                    break;
+                
+                
+                 case "Delete-Admin":
+                    String id2 = request.getParameter("id");
+                    try{
+                    Statement st = con.createStatement();           
+                    int status = st.executeUpdate("DELETE FROM admin WHERE adminID="+ id2);
+                    
+                    }catch(Exception e){
+                        System.out.print(e);
+                        e.printStackTrace();
+                    }
+                   PrintWriter out2 = response.getWriter();
 
+                    out2.println("<script>");
+                        out2.println("    alert('Admin Deleted Successfully!');");
+                        out2.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-Admin-Page'");
+                    out2.println("</script>");
+                   
+                    
+                    break;
+                
                     
                  default:
                      if(session.getAttribute("admin")!=null){

@@ -175,7 +175,50 @@ public class AlumniDAO {
     }
     
     
+        public Alumni getAlumniInfo(String alumniEmail) {
+        System.out.println("hiii" + alumniEmail);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, userName, password);
+            // create sql statement
+            String sql = "select * from alumni where Alumniemail=?";
+
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniEmail);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                Alumni foundAlumni = new Alumni( rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Edulevel"), rs.getString("Gender"), rs.getInt("Graduateyear"), rs.getString("Title"));
+                return foundAlumni;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+
+    }
    
 
     //close connection

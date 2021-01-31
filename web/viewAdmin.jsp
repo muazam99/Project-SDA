@@ -9,7 +9,7 @@
 <html lang="en" dir="ltr">
     <head>
     
-        <title>View Alumni</title>
+        <title>View Admin</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,16 +36,16 @@
         </head>
            <body class="sb-nav-fixed">
             <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-             url = "jdbc:mysql://localhost/sdadatabase"
+             url = "jdbc:mysql://localhost/alumni_database"
              user = "root"  password = ""/>
              <sql:query dataSource = "${snapshot}" var = "result">
-                SELECT * from alumni;
+                SELECT * from admin;
              </sql:query>
              
                 <jsp:include page="adminHeaderNav.jsp" />  
             
         <main class="main mt-5 d-flex flex-column justify-content-start">
-            <h2 class="text-center my-5">List Of Alumnis</h2>
+            <h2 class="text-center my-5">List Of Admin</h2>
             <hr class="container-md"/>
          <div class="container d-flex flex-column align-items-center" style="margin-top:30px">
               
@@ -58,41 +58,28 @@
                     <table class="table table-striped table-bordered border-primary">
                         <tbody>
                              <tr >                                 
-                                 <td  rowspan="6" >
-
-                                        <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" width="100" height="100" /> 
-    
+                                 <td  rowspan="4">
+                                    <img class="vector-6QVaxv"
+                                         src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" width="100" height="100"
+                                        /> 
                                  </td>
 
                              </tr>
                                          <tr>
                                             <td>No:</td>
-                                            <td>${row.AlumniID}</td>
-                                            <td  rowspan="5"> 
-                                                
-                                                <a href="AdminController?command=Delete-Alumni&id=${row.alumniID}">  
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteSuccessful">Delete</button></a>
-                           
-                                             </td>
+                                            <td>${row.adminID}</td>
                                         </tr>
                                         
                                         <tr>
                                             <td>Name :</td>
-                                            <td>${row.Alumniname}</td>
+                                            <td>${row.adminName}</td>
                                             
                                         </tr>
                                         <tr>
-                                            <td>Matrics No.:</td>
-                                            <td>${row.Alumnimatric}</td>
+                                            <td>Email:</td>
+                                            <td>${row.adminEmail}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Email :</td>
-                                            <td>${row.Alumniemail}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone no. :</td>
-                                            <td>${row.Phoneno}</td>
-                                        </tr>
+                                     
                                
                            </tbody>
                        

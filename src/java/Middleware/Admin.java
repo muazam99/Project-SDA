@@ -16,7 +16,6 @@ public class Admin implements User {
 	private String AdminID;
 	private String AdminName;
         private String AdminPassword;
-	private AdminUI m_AdminUI;
         
         
     /**
@@ -119,17 +118,7 @@ public class Admin implements User {
 
 	}
 
-	public AdminUI getAdminUI(){
-		return m_AdminUI;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setAdminUI(AdminUI newVal){
-		m_AdminUI = newVal;
-	}
+	
 
 	public void showSuggestions(){
 
