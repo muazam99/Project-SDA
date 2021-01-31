@@ -208,7 +208,7 @@ public class AlumniController extends HttpServlet {
 
             alumniDao.updateAlumniDetails(alumni);
             request.setAttribute("alumniEmail", alumni.getAlumniEmail());
-           request.getRequestDispatcher("alumniProfile.jsp").forward(request, response);
+            request.getRequestDispatcher("alumniProfile.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

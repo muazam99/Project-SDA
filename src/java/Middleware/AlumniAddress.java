@@ -117,7 +117,7 @@ public class AlumniAddress {
     private String houseNo;
     private String postalCode;
     private String region;
-    private String state;
+    private String state;   
     private String streetName;
     private String alumniID;
 

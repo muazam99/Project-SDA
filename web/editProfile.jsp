@@ -29,10 +29,8 @@
                         <div class="card-body">
                             <h2>Update Profile</h2>
                             <br>
-                            <form action="AlumniController" method="post">
-                               <input type="hidden" name="command" value="UPDATE-ALUMNI" />
-                               <input type="hidden" name="email" value="${alumni.alumniEmail}" />
-
+                            <form action="AlumniController?command=UPDATE-ALUMNI&alumniEmail=${alumni.alumniEmail}" method="post">
+                   
                                 <label for="floatingPassword"><b>Name</b></label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="title" value="${alumni.title}">
