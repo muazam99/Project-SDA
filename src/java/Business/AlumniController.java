@@ -91,7 +91,7 @@ public class AlumniController extends HttpServlet {
             response.setDateHeader("Expires", 0);
             switch (command) {
                 case "UPDATE-ALUMNI":
-                   // updateAlumniInfo(request, response);
+                    updateAlumniInfo(request, response);
                     break;
               
                 default:
@@ -131,7 +131,6 @@ public class AlumniController extends HttpServlet {
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         SignIn signIn = null;
-        RequestDispatcher dispatcher;
 
         if (request.getParameter("command").equals("MY-PROFILE")) {
             signIn = (SignIn) session.getAttribute("signIn");
@@ -154,6 +153,67 @@ public class AlumniController extends HttpServlet {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
+
+        String email = request.getParameter("Email");
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        String matrics = request.getParameter("matrics");
+        String gender = request.getParameter("gender");
+        String citizenship = request.getParameter("citizenship");
+        String Coursename = request.getParameter("Coursename");
+        String edulevel = request.getParameter("edulevel");
+        String title = request.getParameter("title");
+        String graduateYear = request.getParameter("graduateYear");
+        String phone = request.getParameter("Phoneno");
+        
+        String streetName = request.getParameter("streetName");
+        String houseNo = request.getParameter("houseNo");
+        String postalCode = request.getParameter("postalCode");
+        String state = request.getParameter("state");
+        String city = request.getParameter("city");
+        String country = request.getParameter("country");
+        String region = request.getParameter("region");
+        
+        
+
+        try {
+            Alumni alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("email"));
+
+            AlumniAddress alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+           
+            alumni.setPhoneNo(Integer.valueOf(phone));
+            alumni.setTitle(title);
+            alumni.setGraduateYear(Integer.valueOf(graduateYear));
+            alumni.setAlumniEmail(email);
+            alumni.setAlumniName(name);
+            alumni.setPassword(password);
+            alumni.setGender(gender);
+            alumni.setAlumniMatric(matrics);
+            alumni.setAlumniCitizenship(citizenship);
+            alumni.setCourseName(Coursename);
+            alumni.setEduLevel(edulevel);
+
+            alumniAddress.setCity(city);
+            alumniAddress.setCountry(country);
+            alumniAddress.setHouseNo(houseNo);
+            alumniAddress.setRegion(region);
+            alumniAddress.setState(state);
+            alumniAddress.setPostalCode(postalCode);
+            alumniAddress.setStreetName(streetName);
+
+            alumni.setAlumniAddress(alumniAddress);
+            System.out.println("Business.AlumniController.updateAlumniInfo() : " + alumniAddress);
+
+            alumniDao.updateAlumniDetails(alumni);
+            request.setAttribute("alumniEmail", alumni.getAlumniEmail());
+           request.getRequestDispatcher("alumniProfile.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -171,7 +231,6 @@ public class AlumniController extends HttpServlet {
     public void updateAlumniInfoPage(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         SignIn signIn = (SignIn) session.getAttribute("signIn");
-        RequestDispatcher dispatcher;
         try {
             Alumni alumni;
             AlumniAddress alumniAddress;

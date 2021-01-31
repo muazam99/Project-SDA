@@ -7,15 +7,8 @@ package Middleware;
  */
 public class Alumni implements User {
 
-
-    protected String AlumniCurrentJob;
-    protected String AlumniEmail;
-    protected int AlumniGraduateYear;
-    protected String AlumniLocation;
-    protected String AlumniMembershipNo;
-    protected String AlumniName;
-
-    protected String AlumniSatus;
+    
+  
     private String alumniCitizenship;
     private String alumniEmail;
     private String alumniMatric;
@@ -25,13 +18,27 @@ public class Alumni implements User {
     private String alumniAddressID;
     private String gender;
     private String title;
+    private String password;
     private AlumniAddress alumniAddress;
     private String eduLevel;
     private int graduateYear;
     private int phoneNo;
    
-    
-    
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
     
 
     public Alumni() {
@@ -92,7 +99,8 @@ public class Alumni implements User {
 
     }
 
-    public Alumni(String alumniCitizenship, String alumniEmail, String alumniMatric, String alumniName, String batchName, String courseName, String eduLevel, String gender, int graduateYear, int phoneNo, String title, String alumniAddressID) {
+    public Alumni(String password , String alumniCitizenship, String alumniEmail, String alumniMatric, String alumniName, String batchName, String courseName, String eduLevel, String gender, int graduateYear, int phoneNo, String title, String alumniAddressID) {
+        this.password = password;
         this.alumniCitizenship = alumniCitizenship;
         this.alumniEmail = alumniEmail;
         this.alumniMatric = alumniMatric;

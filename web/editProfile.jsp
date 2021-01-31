@@ -73,15 +73,16 @@
                                 <label for="floatingInput"><b>Address</b></label><br>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control"  name="Houseno" value="${alumniAddress.houseNo}" >
-                                    <input type="text" class="form-control" value="${alumniAddress.streetName}" name="Streetname >
+                                    <input type="text" class="form-control" value="${alumniAddress.streetName}" name="Streetname" >
                                 </div>
                                 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" value="${alumniAddress.region}" name="Region">
-                                    <input type="text" class="form-control" value="${alumniAddress.streetName}" name="City">
+                                    <input type="text" class="form-control" value="${alumniAddress.city}" name="City">
+
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" value="${alumniAddress.region}" name="State" >
+                                    <input type="text" class="form-control" value="${alumniAddress.state}"  name="State" >
                                     <input type="text" class="form-control" value="${alumniAddress.postalCode}"  name="Postalcode" >
                                     <input type="text" class="form-control" value="${alumniAddress.country}"  name="Country">
                                 </div>
@@ -89,7 +90,7 @@
 
                                 <div class="form-floating">
                                     <label for="floatingInput"><b>Citizenship</b></label>
-                                    <input type="text" class="form-control" id="floatingInput" ${alumni.alumniCitizenship} name="citizenship">           
+                                    <input type="text" class="form-control" id="floatingInput" value="${alumni.alumniCitizenship}" name="citizenship">           
                                 </div>
 
                                 <div class="form-floating">
