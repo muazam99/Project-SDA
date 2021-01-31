@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,8 +100,28 @@ public class AdminController extends HttpServlet{
                     }
                     break;
                     
-                case "Delete-User":
+                case "Delete-User-Page":
                      getAlumniList(request, response);                  
+                    break;
+                
+                case "Delete-User":
+                    String id = request.getParameter("id");
+                    try{
+                    Statement st = con.createStatement();           
+                    int status = st.executeUpdate("DELETE FROM alumni WHERE alumniID="+ id);
+                    
+                    }catch(Exception e){
+                        System.out.print(e);
+                        e.printStackTrace();
+                    }
+                    PrintWriter out = response.getWriter();
+                    
+                    out.println("<script>");
+                        out.println("    alert('User Deleted Successfully!');");
+                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-User-Page'");
+                    out.println("</script>");
+                   
+                    
                     break;
 
                     

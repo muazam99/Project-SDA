@@ -69,12 +69,14 @@
                                             <td>No:</td>
                                             <td>${row.AlumniID}</td>
                                             <td  rowspan="5"> 
-                                                <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${row.Alumniemail}">  
+                                                <a href="AdminController?command=ALUMNI-INFO&alumniID=${row.alumniID}">  
                                                 <button type="button" class="btn btn-info">VIEW</button></a>
                                                 <br><br>
-                                                <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${row.alumniEmail}">  
-                                                <button type="button" class="btn btn-danger">Delete</button></a>
-                                        
+                                                <a href="AdminController?command=Delete-User&id=${row.alumniID}">  
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteSuccessful">Delete</button></a>
+                                                     <button type="button" class="btn btn-info" id="test">TEST</button></a>
+
+                                              
                                              </td>
                                         </tr>
                                         
@@ -103,10 +105,19 @@
                 </div>  
 
             </div>
+            
+          
+            
         </main>
       
 
 
 
     </body>
+    
+  
+    
+    
 </html>
+
+ 
