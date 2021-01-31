@@ -94,6 +94,12 @@ public class AdminController extends HttpServlet{
                     }
                     break;
                     
+                case "Manage-Admin":
+                    if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("manageAdmin.jsp").forward(request, response);
+                    }
+                    break;
+                    
                 case "Add-Alumni-Page":
                      if(session.getAttribute("admin")!=null){
                         request.getRequestDispatcher("addAlumni.jsp").forward(request, response);
@@ -107,6 +113,12 @@ public class AdminController extends HttpServlet{
                 case "View-Alumni-Page":
                      if(session.getAttribute("admin")!=null){
                         request.getRequestDispatcher("viewAlumni.jsp").forward(request, response);
+                    }
+                    break;
+                    
+               case "Add-Admin-Page":
+                     if(session.getAttribute("admin")!=null){
+                        request.getRequestDispatcher("addAdmin.jsp").forward(request, response);
                     }
                     break;
                     
@@ -170,11 +182,18 @@ public class AdminController extends HttpServlet{
                       AddUser(request, response);
                       break;
                       
+                     case "Add-Admin":
+                          AddAdmin(request,response);
+                          
+                          break;
+                      
                       default:
-                         if(session.getAttribute("admin")!=null){
-                        request.getRequestDispatcher("adminHome.jsp").forward(request, response);
-                    }
-                     break;
+                            if(session.getAttribute("admin")!=null){
+                           request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+                            }
+                       break;
+                     
+                      
                           
                 
                 
@@ -200,6 +219,60 @@ public class AdminController extends HttpServlet{
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       
+    public void AddAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException , ServletException{
+        String adminName  = request.getParameter("adminName");
+        String adminPassword = request.getParameter("adminPassword");
+        String adminEmail = request.getParameter("adminEmail");
+        
+        try{
+            PreparedStatement ps = userdao.getPsAdminRegister();
+            
+            ps.setString(1, adminName);
+            ps.setString(2, adminPassword);
+            ps.setString(3, adminEmail);
+            
+            int insertStatus = 0;
+            insertStatus = ps.executeUpdate();
+
+            if(insertStatus == 1){
+                try (PrintWriter out = response.getWriter()) {
+                        out.println("<script>");
+                        out.println("    alert('ADMIN ADDED SUCCESSFULLY!');");
+                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Manage-Admin'");
+                        out.println("</script>");
+                } 
+            }
+
+        } catch (SQLException ex) {
+            while (ex != null) {
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("Message:  " + ex.getMessage());
+                System.out.println("Vendor:   " + ex.getErrorCode());
+                ex = ex.getNextException();
+                System.out.println("");
+            }
+
+            PrintWriter out = response.getWriter();
+
+            out.println("<script>");
+            out.println("    alert('admin insert failed sqlexception ');");
+            out.println("    window.location.href  = '/integratedallsysmtem/manageAdmin.jsp'");
+            out.println("</script>");
+        } catch (java.lang.Exception ex) {
+            ex.printStackTrace();
+
+            PrintWriter out = response.getWriter();
+
+            out.println("<script>");
+            out.println("    alert('admin insert failed exception');");
+            out.println("    window.location.href  = '/integratedallsysmtem/manageAdmin.jsp'");
+            out.println("</script>");
+        }
+
+        
+    }
+
        
     
     

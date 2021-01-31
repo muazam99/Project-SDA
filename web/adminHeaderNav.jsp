@@ -19,7 +19,7 @@
                     <a class="nav-link" href="AdminController?command=Manage-Alumni">Manage Alumni</a>
                   </li>
                     <li class="nav-item active">
-                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Manage Admin</a>
+                    <a class="nav-link" href="AdminController?command=Manage-Admin">Manage Admin</a>
                   </li>
                   
                </ul>

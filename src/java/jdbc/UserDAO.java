@@ -23,6 +23,7 @@ public class UserDAO {
     
     PreparedStatement psRegisterController = null;
     PreparedStatement psSignInController = null;
+    PreparedStatement psAdminController = null;
    
     public UserDAO(String driver,
                        String url,
@@ -94,10 +95,12 @@ public class UserDAO {
               String insert_users ="INSERT INTO alumni(Title ,Alumniname, password, Alumnimatric, Gender,Alumnicitizenship, Alumniemail,Phoneno, Coursename ,Edulevel, GraduateYear,AlumniaddressID ) " +
                      " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";     
               
+              String insert_admin = "INSERT INTO admin(adminName , adminPassword , adminEmail )VALUES (?,?,?)";
             
             //prepare statement
            
-            psRegisterController = con.prepareStatement(insert_users);    
+            psRegisterController = con.prepareStatement(insert_users);  
+            psAdminController = con.prepareStatement(insert_admin);
             
         }
         catch (SQLException ex){
@@ -119,6 +122,10 @@ public class UserDAO {
     
     public PreparedStatement getPsRegister(){
         return psRegisterController;
+    }
+    
+    public PreparedStatement getPsAdminRegister(){
+        return psAdminController;
     }
     
     //LOGIN DAO
