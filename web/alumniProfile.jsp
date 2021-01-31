@@ -27,6 +27,7 @@
                         <div class="container" style="margin-top: 100px">
                             
                             <div class="text-center">
+                                 <a  href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}">
                                   <button type="button" class="btn btn-primary btn-lg">Edit Profile</button></a>
                             </div>
                             <br><br><br>

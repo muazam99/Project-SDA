@@ -62,7 +62,7 @@ public class AlumniController extends HttpServlet {
                     break;
                 
                 case "EDIT-PROFILE":
-                   // updateAlumniInfoPage(request, response);
+                   updateAlumniInfoPage(request, response);
 
                     break;
 
@@ -167,49 +167,40 @@ public class AlumniController extends HttpServlet {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     *
-     * @param alumniEmail
-     */
-   
-    /**
-     *
-     * @param alumniName
-     * @param query
-     */
     
+    public void updateAlumniInfoPage(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        SignIn signIn = (SignIn) session.getAttribute("signIn");
+        RequestDispatcher dispatcher;
+        try {
+            Alumni alumni;
+            AlumniAddress alumniAddress;
+            System.out.println(request.getParameter("alumniEmail"));
 
-    /**
-     *
-     * @param alumniName
-     */
-   
+            if (signIn != null) {
+                alumni = alumniDao.getDetailedAlumniInfo(signIn.getEmail());
 
-    /**
-     *
-     * @param address
-     * @param alumniEmail
-     * @param phoneNo
-     * @param eduLevel
-     * @param graduateYear
-     * @param courseName
-     */
-    /*  public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) throw Exception{
-        
-        Alumni alumni = new Alumni();
-        
-        
-    } */
-    /**
-     *
-     * @param address
-     * @param eduLevel
-     * @param phoneNumber
-     * @param title
-     * @param courseName
-     * @param graudateYear
-     */
+                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            } 
+            else if (request.getParameter("alumniEmail") != null) {
+                alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
+                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            } 
+            else {
+                alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
+                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            }
+
+            
+            request.setAttribute("alumni", alumni);
+            request.setAttribute("alumniAddress", alumniAddress);
+            request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+ 
     public boolean validateFields(AlumniAddress address, String eduLevel, int phoneNumber, String title, String courseName, int graudateYear) {
         return false;
     }

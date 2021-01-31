@@ -219,6 +219,94 @@ public class AlumniDAO {
         return null;
 
     }
+        
+        public Alumni getDetailedAlumniInfo(String alumniEmail) {
+        System.out.println("hiii" + alumniEmail);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, userName, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumni WHERE Alumniemail=? ";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniEmail);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), rs.getString("Edulevel"), rs.getString("Gender"), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), rs.getString("Title"), rs.getString("AlumniaddressID"));
+                return foundAlumniInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
+
+    public AlumniAddress getAlumniAddressInfo(String alumniAddressID) {
+        System.out.println("hiii" + alumniAddressID);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, userName, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumniaddress WHERE AlumniaddressID=? ";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniAddressID);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                AlumniAddress foundAlumniAddressInfo = new AlumniAddress(rs.getString("City"), rs.getString("Country"), rs.getString("Houseno"), rs.getString("Postalcode"), rs.getString("Region"), rs.getString("State"), rs.getString("Streetname"));
+                return foundAlumniAddressInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
    
 
     //close connection
