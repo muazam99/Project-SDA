@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/manageUser.jsp</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/deleteUser.jsp</file>
             <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/RegisterController.java</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/index.jsp</file>
             <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/AdminController.java</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/bootstrap5.jsp</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/register.html</file>
             <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/jdbc/AlumniDAO.java</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/SignInController.java</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/addUser.jsp</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/LogoutController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/adminHeaderNav.jsp</file>
             <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/jdbc/UserDAO.java</file>
         </group>
     </open-files>

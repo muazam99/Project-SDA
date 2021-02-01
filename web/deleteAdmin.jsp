@@ -70,10 +70,10 @@
                                             <td>${row.adminID}</td>
                                             <td  rowspan="3"> 
                                                 
-                                                <a href="AdminController?command=Delete-Admin&id=${row.adminID}">  
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteSuccessful">Delete</button></a>
-                           
-                                             </td>
+                                                <a href="AdminController?command=Delete-Admin&id=${row.adminID}">                           
+                                                  <button type="button" class="btn btn-danger" onclick="if (confirm('Are you sure you want to delete?')) { form.action='AdminController?command=Delete-Admin&id=${row.adminID}'; } else { return false; }"
+                                                            >Delete</button></a>
+                                            </td>
                                         </tr>
                                         
                                         <tr>
