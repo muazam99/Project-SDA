@@ -111,23 +111,8 @@ public class AdminController extends HttpServlet{
                     break;
             
                 case "Delete-Alumni":
-                    String id = request.getParameter("id");
-                    try{
-                    Statement st = con.createStatement();           
-                    int status = st.executeUpdate("DELETE FROM alumni WHERE alumniID="+ id);
-                    
-                    }catch(Exception e){
-                        System.out.print(e);
-                        e.printStackTrace();
-                    }
-                    PrintWriter out = response.getWriter();
-                    
-                    out.println("<script>");
-                        out.println("    alert('User Deleted Successfully!');");
-                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-Alumni-Page'");
-                    out.println("</script>");
-                   
-                    
+                    Delete(request, response);
+                     
                     break;
                 
                  //
@@ -241,6 +226,25 @@ public class AdminController extends HttpServlet{
             
             
      }
+     
+       public void Delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            String id = request.getParameter("id");
+                    try{
+                    Statement st = con.createStatement();           
+                    int status = st.executeUpdate("DELETE FROM alumni WHERE alumniID="+ id);
+                    
+                    }catch(Exception e){
+                        System.out.print(e);
+                        e.printStackTrace();
+                    }
+                    PrintWriter out = response.getWriter();
+                    
+                    out.println("<script>");
+                        out.println("    alert('User Deleted Successfully!');");
+                        out.println("    window.location = '" + request.getContextPath() + "/AdminController?command=Delete-Alumni-Page'");
+                    out.println("</script>");
+                           
+       }
      
      
        public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
